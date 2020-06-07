@@ -18,7 +18,7 @@
       </div>
       <div class="input-section">
           <div class="input-title">
-              Business Name
+              Business Name (Optional)
           </div>
           <div class="input-value">
               <input type="text" v-model="businessName" :class="businessName.length > 0 ? 'empty' : ''">
