@@ -90,13 +90,13 @@
       </div>
       <div v-for="(campaign, index) in availableCampaigns" :key="index" class="table-row">
         <div class="td t-score"><div class="score-square" :class="campaign.getScoreClass()">{{campaign.score}}</div></div>
-        <div class="td t-data"><div class="product">{{campaign.campaignTitle}}</div><a :href="campaign.specificationLink" class="specifications" target="_blank">Product Specifications</a></div>
-        <div class="td t-data">{{campaign.getFactoryName()}}</div>
-        <div class="td t-location">{{campaign.getLocation()}}</div>
-        <div class="td t-lead-time">{{campaign.getLeadTime()}}</div>
-        <div class="td t-unit">{{campaign.getUnitPrice()}}</div>
-        <div class="td t-qty">{{campaign.getMoq()}}</div>
-        <div class="td t-data"><button @click="showModal('create', index)" class="secondary">Start A GruupBuy</button></div>
+        <div class="td t-data"><div class="product" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.campaignTitle}}</div><a :href="campaign.specificationLink" class="specifications" target="_blank">Product Specifications</a></div>
+        <div class="td t-data" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getFactoryName()}}</div>
+        <div class="td t-location" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getLocation()}}</div>
+        <div class="td t-lead-time" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getLeadTime()}}</div>
+        <div class="td t-unit" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getUnitPrice()}}</div>
+        <div class="td t-qty" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getMoq()}}</div>
+        <div class="td t-data" :class="shouldBold(campaign) ? 'bold' : ''"><button @click="showModal('create', index)" class="secondary">Start A GruupBuy</button></div>
       </div>
     </div>
   </div>
@@ -198,6 +198,9 @@ export default Vue.extend({
     },
     chooseARandomAddress (): string {
       return this.addresses[getRandomInt(3)]
+    },
+    shouldBold (campaign: Campaign): boolean {
+      return campaign.getLocation() === 'Detroit, MI'
     }
   },
   mounted () {
