@@ -47,7 +47,7 @@
             </div>
             <div class="info-container">
               <div class="info-data">
-                <span class="key">GruupBuy Organizer</span><span class="value">{{campaign.organizer}}</span>
+                <span class="key">GruupBuy Organizer:</span><span class="value">{{campaign.organizer}}</span>
               </div>
               <div v-for="(data, index) in campaign.campaignData" :key="index" class="info-data">
                 <span class="key">{{`${data.key}:`}}</span><span class="value">{{formatNumber(data.value)}}<div v-if="index === 0" class="specifications">(<a :href="campaign.specificationLink" target="_blank">Product Specifications</a>)</div></span>
@@ -61,7 +61,7 @@
         <div class="campaign-column-right">
           <div class="ccr-row">
             <div class="progress-percent">
-              {{getPercentQuantity(campaign)}}% of Goal
+              {{getPercentQuantityAsString(campaign)}}% of Goal
             </div>
             <div class="join-button">
               <button @click="showModal('join', index)" class='secondary'>Join this GruupBuy</button>
@@ -148,8 +148,12 @@ export default Vue.extend({
       const qty = campaign.quantity
       const moq = campaign.campaignData.find((data) => data.key === 'MOQ') as {key: string; value: number}
 
-      const number = qty / moq.value * 100
+      const number = Math.round((qty / moq.value * 100) * 1e2) / 1e2
       return number
+    },
+    getPercentQuantityAsString (campaign: ActiveCampaign): string {
+      const percentQuantity = this.getPercentQuantity(campaign)
+      return percentQuantity.toString().split('.')[0]
     },
     formatProperString (input: string): string {
       let rval = input[0]
@@ -177,13 +181,14 @@ export default Vue.extend({
     closeModal (): void {
       this.modalShowing = false
     },
-    purchaseComplete (args: {qty: number; name: string}): void {
+    purchaseComplete (args: {qty: string; name: string}): void {
       let campaign: Campaign | ActiveCampaign | undefined
+      const quantity = parseInt(args.qty)
       if (this.modalMode === 'create') {
         campaign = this.availableCampaigns[this.modalIndex]
-        this.existingCampaigns.push(ActiveCampaign.fromCampaign(campaign, 30, 'FIX ME', args.name, args.qty, campaign.unit === 'gallons'))
+        this.existingCampaigns.push(ActiveCampaign.fromCampaign(campaign, 30, 'FIX ME', args.name, quantity, campaign.unit === 'gallons'))
       } else {
-        this.existingCampaigns[this.modalIndex].quantity += args.qty
+        this.existingCampaigns[this.modalIndex].quantity += quantity
       }
 
       this.modalShowing = false

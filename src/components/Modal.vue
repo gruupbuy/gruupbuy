@@ -94,7 +94,7 @@ export default Vue.extend({
       this.$emit('cancel')
     },
     completePurchase (): void {
-      this.$emit('purchaseComplete', this.quantity, this.name)
+      this.$emit('purchaseComplete', { qty: this.quantity, name: this.name })
     }
   }
 })
