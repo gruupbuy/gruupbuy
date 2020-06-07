@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <modal @cancel="closeModal" :mode="modalMode" :title="modalTitle" v-if="modalShowing" @purchaseComplete="purchaseComplete"/>
-    <div v-if="modalShowing" class="shadow"></div>
+    <div v-if="modalShowing" class="modal-shadow" style="opacity: 50%;"></div>
     <div class="headerbar">
       <div class="button-bar">
         <button class="secondary">Login / Sign Up</button>
