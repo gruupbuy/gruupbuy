@@ -63,6 +63,7 @@ $red: #FA3D64;
     .active-campaigns {
         display: flex;
         flex-direction: column;
+        margin-bottom: 55px;
     }
     .campaign {
         display: flex;
@@ -144,7 +145,7 @@ $red: #FA3D64;
             .ccr-row {
                 display: flex;
                 height: 30px;
-                margin-top: 20px;
+                margin-top: 12px;
 
                 .progress-percent {
                     display: flex;
@@ -153,6 +154,34 @@ $red: #FA3D64;
                     font-size: 13px;
                     font-weight: bold;
                     margin-right: 10px;
+                }
+
+                .join-button {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .share-icon {
+                    height: 15px;
+                    margin-right: 3px;
+                }
+
+                a.share-text {
+                    margin-right: 6px;
+                    color: $black;
+                    text-decoration: none;
+                }
+
+                .share-text:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+                .share {
+                    display: flex;
+                    font-size: 9px;
+                    font-style: italic;
+                    justify-content: flex-end;
                 }
             }
         }

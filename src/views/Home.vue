@@ -63,6 +63,10 @@
             </div>
             <div class="join-button">
               <button class='secondary'>Join this GruupBuy</button>
+              <div class="share">
+                <img class="share-icon" src="https://assets.medinas.com/hackathon/share-icon.svg"/>
+                <a href="mailto:" class="share-text">Share Campaign</a>
+              </div>
             </div>
           </div>
           <div class="ccr-row">
@@ -70,6 +74,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="section-title">
+      GruupBuy Vetted Factories
     </div>
   </div>
 </template>
