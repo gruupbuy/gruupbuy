@@ -51,7 +51,8 @@
       "ecmaVersion": 2020
     },
     "rules": {
-      "no-useless-constructor": "off"
+      "no-useless-constructor": "off",
+      "no-non-null-assertion": "off"
     }
   },
   "browserslist": [

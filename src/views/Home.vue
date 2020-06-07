@@ -69,14 +69,33 @@
               </div>
             </div>
           </div>
-          <div class="ccr-row">
-
-          </div>
         </div>
       </div>
     </div>
     <div class="section-title">
       GruupBuy Vetted Factories
+    </div>
+    <div class="table-container">
+      <div class="table-headers">
+        <div class="th t-score">SCORE</div>
+        <div class="th t-data">PRODUCT</div>
+        <div class="th t-data">FACTORY NAME</div>
+        <div class="th t-location">LOCATION</div>
+        <div class="th t-lead-time">LEAD TIME</div>
+        <div class="th t-unit">UNIT PRICE</div>
+        <div class="th t-qty">MIN QTY</div>
+        <div class="th t-data">PURCHASE</div>
+      </div>
+      <div v-for="(campaign, index) in availableCampaigns" :key="index" class="table-row">
+        <div class="td t-score"><div class="score-square" :class="campaign.getScoreClass()">{{campaign.score}}</div></div>
+        <div class="td t-data"><div class="product">{{campaign.campaignTitle}}</div><a :href="campaign.specificationLink" class="specifications" target="_blank">Product Specifications</a></div>
+        <div class="td t-data">{{campaign.getFactoryName()}}</div>
+        <div class="td t-location">{{campaign.getLocation()}}</div>
+        <div class="td t-lead-time">{{campaign.getLeadTime()}}</div>
+        <div class="td t-unit">{{campaign.getUnitPrice()}}</div>
+        <div class="td t-qty">{{campaign.getMoq()}}</div>
+        <div class="td t-data"><button class="secondary">Start A GruupBuy</button></div>
+      </div>
     </div>
   </div>
 </template>
@@ -90,7 +109,14 @@ export default Vue.extend({
   name: 'Home',
   data: () => {
     return {
-      existingCampaigns: [] as ActiveCampaign[]
+      existingCampaigns: [] as ActiveCampaign[],
+      availableCampaigns: [] as Campaign[],
+      THREE_PLY_IMG_URL: 'https://assets.medinas.com/hackathon/3ply.jpg',
+      KN_IMG_URL: 'https://assets.medinas.com/hackathon/KN95.jpg',
+      SANITIZER_IMG_URL: 'https://assets.medinas.com/hackathon/sanitizer.jpg',
+      THREE_PLY_PDF_URL: 'https://assets.medinas.com/hackathon/3-ply.pdf',
+      KN_PDF_URL: 'https://assets.medinas.com/hackathon/KN95.pdf',
+      SANITIZER_PDF_URL: 'https://assets.medinas.com/hackathon/hand-sanitizer.pdf'
     }
   },
   methods: {
@@ -123,34 +149,37 @@ export default Vue.extend({
     }
   },
   mounted () {
-    const activeSurgicalCampaign = new ActiveCampaign('https://assets.medinas.com/hackathon/3ply.jpg',
+    const activeSurgicalCampaign = new ActiveCampaign(this.THREE_PLY_IMG_URL,
       '3-ply Surgical Masks',
-      'https://assets.medinas.com/hackathon/3-ply.pdf',
+      this.THREE_PLY_PDF_URL,
       [{ key: 'Factory Name', value: 'Orange Supplies, Inc' }, { key: 'Location', value: 'Detroit, MI' }, { key: 'MOQ', value: 30000 }, { key: 'Lead Time', value: '3 Days' }, { key: 'Unit Price', value: '$.90/mask' }],
       20,
       'masks',
+      'A',
       12,
       '5201 Woodward Ave, Detroit, MI 48202',
       'Detroit Medical Supply, Inc',
       13500)
 
-    const activeKnCampaign = new ActiveCampaign('https://assets.medinas.com/hackathon/KN95.jpg',
+    const activeKnCampaign = new ActiveCampaign(this.KN_IMG_URL,
       'KN95 Masks',
-      'https://assets.medinas.com/hackathon/KN95.pdf',
+      this.KN_PDF_URL,
       [{ key: 'Factory Name', value: 'Avocado, Inc' }, { key: 'Location', value: 'Detroit, MI' }, { key: 'MOQ', value: 5000 }, { key: 'Lead Time', value: '3 Days' }, { key: 'Unit Price', value: '$.90/mask' }],
       90,
       'masks',
+      'A',
       20,
       '121 Gratiot Ave, Detroit, MI 48226',
       'Detroit Municipal Hospital',
       750)
 
-    const activeSanitizerCampaign = new ActiveCampaign('https://assets.medinas.com/hackathon/sanitizer.jpg',
+    const activeSanitizerCampaign = new ActiveCampaign(this.SANITIZER_IMG_URL,
       'Hand Sanitizer',
-      'https://assets.medinas.com/hackathon/hand-sanitizer.pdf',
+      this.SANITIZER_PDF_URL,
       [{ key: 'Factory Name', value: 'Kiwi Supplies Inc' }, { key: 'Location', value: 'Anhui, China' }, { key: 'MOQ', value: 100 }, { key: 'Lead Time', value: '34 Days' }, { key: 'Unit Price', value: '$7.00/gallon' }],
       700,
       'gallon',
+      'A',
       1,
       '2507 W Grand Blvd, Detroit, MI 48208',
       'Jeff\'s Coffee Cafe',
@@ -160,6 +189,30 @@ export default Vue.extend({
     this.existingCampaigns.push(activeSurgicalCampaign)
     this.existingCampaigns.push(activeKnCampaign)
     this.existingCampaigns.push(activeSanitizerCampaign)
+
+    this.availableCampaigns.push(
+      new Campaign(this.THREE_PLY_IMG_URL, '3 Ply Surgical Masks', this.THREE_PLY_PDF_URL, [{ key: 'Factory Name', value: 'Orange Supplies Inc' }, { key: 'Location', value: 'Detroit, MI' }, { key: 'Lead Time', value: '12 Days' }, { key: 'Unit Price', value: '$.20/mask' }, { key: 'MOQ', value: 30000 }], 20, 'mask', 'A')
+    )
+
+    this.availableCampaigns.push(
+      new Campaign(this.THREE_PLY_IMG_URL, '3 Ply Surgical Masks', this.THREE_PLY_PDF_URL, [{ key: 'Factory Name', value: 'Grape Corp' }, { key: 'Location', value: 'San Diego, CA' }, { key: 'Lead Time', value: '14 Days' }, { key: 'Unit Price', value: '$.09/mask' }, { key: 'MOQ', value: 50000 }], 20, 'mask', 'C')
+    )
+
+    this.availableCampaigns.push(
+      new Campaign(this.KN_IMG_URL, 'KN95 Mask', this.KN_PDF_URL, [{ key: 'Factory Name', value: 'Avocado Inc' }, { key: 'Location', value: 'Detroit, MI' }, { key: 'Lead Time', value: '3 Days' }, { key: 'Unit Price', value: '$.90/mask' }, { key: 'MOQ', value: 5000 }], 90, 'mask', 'B')
+    )
+
+    this.availableCampaigns.push(
+      new Campaign(this.KN_IMG_URL, 'KN95 Mask', this.KN_PDF_URL, [{ key: 'Factory Name', value: 'Pear Manufacturing' }, { key: 'Location', value: 'Detroit, MI' }, { key: 'Lead Time', value: '1 Day' }, { key: 'Unit Price', value: '$.79/mask' }, { key: 'MOQ', value: 30000 }], 79, 'mask', 'A')
+    )
+
+    this.availableCampaigns.push(
+      new Campaign(this.SANITIZER_IMG_URL, 'Hand Sanitizer', this.SANITIZER_PDF_URL, [{ key: 'Factory Name', value: 'Kiwi Supplies Inc' }, { key: 'Location', value: 'Anhui, China' }, { key: 'Lead Time', value: '34 Days' }, { key: 'Unit Price', value: '$7.00/gallon' }, { key: 'MOQ', value: 30000 }], 700, 'gallon', 'C')
+    )
+
+    this.availableCampaigns.push(
+      new Campaign(this.THREE_PLY_IMG_URL, '3 Ply Surgical Masks', this.THREE_PLY_PDF_URL, [{ key: 'Factory Name', value: 'Orange Supplies Inc' }, { key: 'Location', value: 'Detroit, MI' }, { key: 'Lead Time', value: '12 Days' }, { key: 'Unit Price', value: '$.20/mask' }, { key: 'MOQ', value: 30000 }], 20, 'mask', 'A')
+    )
   }
 })
 </script>

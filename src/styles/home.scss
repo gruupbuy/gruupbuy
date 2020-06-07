@@ -2,6 +2,9 @@ $blue: #1C74EC;
 $blue-hover: #7FB5FF;
 $black: #141414;
 $red: #FA3D64;
+$border-color: #E5F1FF;
+$yellow: #F7B423;
+$trow-hover: #F5F9FE;
 
 .home {
     padding: 0 0 0 95px;
@@ -185,6 +188,99 @@ $red: #FA3D64;
                 }
             }
         }
+    }
+
+    .table-container {
+        margin-bottom: 50px;
+        border: 1px solid $border-color;
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;
+        .table-headers {
+            display: flex;
+            margin-bottom: 35px;
+            align-items: center;
+            .th {
+                font-size: 11px;
+                font-weight: bold;
+                text-align: left;
+                margin-right: 15px;
+            }
+        }
+
+        .table-row {
+            display: flex;
+            height: 100px;
+            align-items: center;
+            border-top: 1px solid $border-color;
+            .td {
+                font-size: 13px;
+                text-align: left;
+                margin-right: 15px;
+            }
+        }
+
+        .table-row:hover {
+            background-color: $trow-hover;
+        }
+
+        .t-score {
+            width: 70px;
+            padding-left: 40px;
+        }
+
+        .t-data {
+            width: 140px;
+        }
+
+        .t-qty {
+            width: 40px;
+        }
+
+        .t-unit {
+            width: 60px;
+        }
+
+        .t-location {
+            width: 80px;
+        }
+
+        .t-lead-time {
+            width: 90px;
+        }
+
+        .score-square {
+            height: 30px;
+            width: 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blue {
+            background-color: $blue;
+        }
+
+        .red {
+            background-color: $red;
+        }
+
+        .yellow {
+            background-color: $yellow;
+        }
+    }
+
+    a.specifications {
+        font-size: 11px;
+        color: $blue;
+        text-decoration: none;
+    }
+
+    a.specifications:hover {
+        text-decoration: underline;
     }
 }
 
