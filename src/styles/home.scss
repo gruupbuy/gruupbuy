@@ -201,7 +201,6 @@ body {
 
     $t-margin: 30px;
     .table-container {
-        margin-bottom: 50px;
         border: 1px solid $border-color;
         display: flex;
         flex-direction: column;
@@ -300,6 +299,21 @@ body {
 
     a.specifications:hover {
         text-decoration: underline;
+    }
+
+    .footer {
+        margin-top: 30px;
+        margin-bottom: 40px;
+        font-size: 11px;
+
+        a {
+            text-decoration: none;
+            color: $blue;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     }
 }
 

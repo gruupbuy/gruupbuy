@@ -99,6 +99,7 @@
         <div class="td t-data" :class="shouldBold(campaign) ? 'bold' : ''"><button @click="showModal('create', index)" class="secondary">Start A GruupBuy</button></div>
       </div>
     </div>
+    <div class="footer">GruupBuy is a hackathon project with Forbes U30 that is currently not a live product.  GruupBuy is powered by <a href="https://www.medinas.com">Medinas Health</a></div>
   </div>
 </template>
 
