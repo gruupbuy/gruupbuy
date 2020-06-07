@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <modal/>
-    <div class="shadow"></div>
+    <modal @cancel="closeModal" :mode="modalMode" :title="modalTitle" v-if="modalShowing" @purchaseComplete="purchaseComplete"/>
+    <div v-if="modalShowing" class="shadow"></div>
     <div class="headerbar">
       <div class="button-bar">
         <button class="secondary">Login / Sign Up</button>
@@ -64,7 +64,7 @@
               {{getPercentQuantity(campaign)}}% of Goal
             </div>
             <div class="join-button">
-              <button class='secondary'>Join this GruupBuy</button>
+              <button @click="showModal('join', index)" class='secondary'>Join this GruupBuy</button>
               <div class="share">
                 <img class="share-icon" src="https://assets.medinas.com/hackathon/share-icon.svg"/>
                 <a href="mailto:" class="share-text">Share Campaign</a>
@@ -96,7 +96,7 @@
         <div class="td t-lead-time">{{campaign.getLeadTime()}}</div>
         <div class="td t-unit">{{campaign.getUnitPrice()}}</div>
         <div class="td t-qty">{{campaign.getMoq()}}</div>
-        <div class="td t-data"><button class="secondary">Start A GruupBuy</button></div>
+        <div class="td t-data"><button @click="showModal('create', index)" class="secondary">Start A GruupBuy</button></div>
       </div>
     </div>
   </div>
@@ -122,7 +122,11 @@ export default Vue.extend({
       SANITIZER_IMG_URL: 'https://assets.medinas.com/hackathon/sanitizer.jpg',
       THREE_PLY_PDF_URL: 'https://assets.medinas.com/hackathon/3-ply.pdf',
       KN_PDF_URL: 'https://assets.medinas.com/hackathon/KN95.pdf',
-      SANITIZER_PDF_URL: 'https://assets.medinas.com/hackathon/hand-sanitizer.pdf'
+      SANITIZER_PDF_URL: 'https://assets.medinas.com/hackathon/hand-sanitizer.pdf',
+      modalShowing: false,
+      modalMode: 'create',
+      modalTitle: '',
+      modalIndex: -1
     }
   },
   methods: {
@@ -156,6 +160,34 @@ export default Vue.extend({
     scrollTo (element: string): void {
       const refElement = this.$refs[element] as Element
       refElement.scrollIntoView(true)
+    },
+    showModal (mode: string, campaignIndex: number): void {
+      let campaign: Campaign | ActiveCampaign | undefined
+      if (mode === 'create') {
+        campaign = this.availableCampaigns[campaignIndex]
+      } else {
+        campaign = this.existingCampaigns[campaignIndex]
+      }
+
+      this.modalMode = mode
+      this.modalTitle = `${campaign.campaignTitle} from ${campaign.getFactoryName()}`
+      this.modalShowing = true
+      this.modalIndex = campaignIndex
+    },
+    closeModal (): void {
+      this.modalShowing = false
+    },
+    purchaseComplete (args: {qty: number; name: string}): void {
+      let campaign: Campaign | ActiveCampaign | undefined
+      if (this.modalMode === 'create') {
+        campaign = this.availableCampaigns[this.modalIndex]
+        this.existingCampaigns.push(ActiveCampaign.fromCampaign(campaign, 30, 'FIX ME', args.name, args.qty, campaign.unit === 'gallons'))
+      } else {
+        this.existingCampaigns[this.modalIndex].quantity += args.qty
+      }
+
+      this.modalShowing = false
+      this.scrollTo('campaigns')
     }
   },
   mounted () {

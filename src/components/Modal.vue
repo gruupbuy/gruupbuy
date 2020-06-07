@@ -1,9 +1,12 @@
 <template>
   <div class="modal">
-      <div class="modal-title">
-          Join a GruupBuy
+      <div class="cancel-row">
+          <div @click="closeModal" class="cancel-button">X</div>
       </div>
-      <div class="modal-subtitle">30,000 KN95 Masks from Pear Manufacturing</div>
+      <div class="modal-title">
+          {{`${mode === 'create' ? 'Start' : 'Join'}`}} a GruupBuy
+      </div>
+      <div class="modal-subtitle">{{title}}</div>
       <div class="modal-info">If your campaign doesn't hit its minimum order quantity goal, you'll be refunded 100% of your funds.</div>
       <div class="input-section">
           <div class="input-title">
@@ -64,7 +67,7 @@
           </div>
       </div>
       <div class="button-row">
-        <button class="primary extra-padding">Complete Purchase</button>
+        <button @click="completePurchase()" class="primary extra-padding">Complete Purchase</button>
       </div>
   </div>
 </template>
@@ -74,6 +77,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'Modal',
+  props: ['mode', 'title'],
   data: () => {
     return {
       name: '',
@@ -83,6 +87,14 @@ export default Vue.extend({
       expDate: '',
       cvv: '',
       zip: ''
+    }
+  },
+  methods: {
+    closeModal (): void {
+      this.$emit('cancel')
+    },
+    completePurchase (): void {
+      this.$emit('purchaseComplete', this.quantity, this.name)
     }
   }
 })

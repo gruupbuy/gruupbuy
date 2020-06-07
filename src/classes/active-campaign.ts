@@ -5,7 +5,7 @@ export default class ActiveCampaign extends Campaign {
     super(imageUrl, campaignTitle, specificationLink, campaignData, unitPriceInCents, unit, score)
   }
 
-  fromCampaign (campaign: Campaign, daysLeft: number, pickUpLocation: string, organizer: string, quantity: number, shouldIncludeUnitsInTitle = false): ActiveCampaign {
+  static fromCampaign (campaign: Campaign, daysLeft: number, pickUpLocation: string, organizer: string, quantity: number, shouldIncludeUnitsInTitle = false): ActiveCampaign {
     return new ActiveCampaign(campaign.imageUrl, campaign.campaignTitle, campaign.specificationLink, campaign.campaignData, campaign.unitPriceInCents, campaign.unit, campaign.score, daysLeft, pickUpLocation, organizer, quantity, shouldIncludeUnitsInTitle)
   }
 }

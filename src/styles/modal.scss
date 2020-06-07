@@ -3,7 +3,7 @@
 .home {
     .modal {
         $modal-width: 500px;
-        $padding: 70px;
+        $padding: 90px 70px;
         position: fixed;
         width: $modal-width;
         height: 550px;
@@ -13,6 +13,15 @@
         right: 0;
         z-index: 900;
         padding: $padding;
+
+        .cancel-row {
+            display: flex;
+            justify-content: flex-end;
+            
+            .cancel-button {
+                cursor: pointer;
+            }
+        }
 
         .modal-title {
             text-align: left;
