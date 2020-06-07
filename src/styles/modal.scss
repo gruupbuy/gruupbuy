@@ -3,10 +3,10 @@
 .home {
     .modal {
         $modal-width: 500px;
-        $padding: 90px 70px;
+        $padding: 40px 70px 90px;
         position: fixed;
         width: $modal-width;
-        height: 550px;
+        height: 580px;
         background-color: #ffffff;
         margin: 2% auto; /* Will not center vertically and won't work in IE6/7. */
         left: 0;
@@ -141,6 +141,18 @@
             button.extra-padding {
                 min-width: 180px;
                 min-height: 40px;
+            }
+        }
+
+        .checkbox-row {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .checkbox-label {
+                margin-left: 10px;
+                font-size: 13px;
             }
         }
     }

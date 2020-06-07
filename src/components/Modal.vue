@@ -66,6 +66,10 @@
             </div>
           </div>
       </div>
+      <div class="checkbox-row">
+        <input type="checkbox">
+        <div class="checkbox-label">Donate 5% of your order to charity</div>
+      </div>
       <div class="button-row">
         <button @click="completePurchase()" class="primary extra-padding">Complete Purchase</button>
       </div>
