@@ -166,7 +166,7 @@ export default Vue.extend({
     },
     scrollTo (element: string): void {
       const refElement = this.$refs[element] as Element
-      refElement.scrollIntoView(true)
+      refElement.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' })
     },
     showModal (mode: string, campaignIndex: number): void {
       let campaign: Campaign | ActiveCampaign | undefined
