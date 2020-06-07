@@ -21,7 +21,7 @@
       </div>
       <div class="right-column-content">
         <div class="right-content">
-          GruupBuy allows you to join forces with other local businesses in Detroit to meet factory set minimum order quantites (MOQs) leveraging your group purchasing power to get the best
+          GruupBuy allows you to join forces with other local businesses or individuals in Detroit to meet factory set minimum order quantites (MOQs) leveraging your group purchasing power to get the best prices.
         </div>
         <div class="right-content">View existing GruupBuys to see if anyone is running a campaign for the supplies you need.</div>
         <div class="right-content">- OR -</div>
