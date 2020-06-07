@@ -107,6 +107,7 @@ import Vue from 'vue'
 import ActiveCampaign from '@/classes/active-campaign'
 import Campaign from '@/classes/campaign'
 import Modal from '@/components/Modal.vue'
+import { getRandomInt } from '@/classes/strings'
 
 export default Vue.extend({
   name: 'Home',
@@ -126,7 +127,8 @@ export default Vue.extend({
       modalShowing: false,
       modalMode: 'create',
       modalTitle: '',
-      modalIndex: -1
+      modalIndex: -1,
+      addresses: ['5201 Woodward Ave, Detroit, MI 48202', '121 Gratiot Ave, Detroit, MI 48226', '2507 W Grand Blvd, Detroit, MI 48208']
     }
   },
   methods: {
@@ -186,13 +188,16 @@ export default Vue.extend({
       const quantity = parseInt(args.qty)
       if (this.modalMode === 'create') {
         campaign = this.availableCampaigns[this.modalIndex]
-        this.existingCampaigns.push(ActiveCampaign.fromCampaign(campaign, 30, 'FIX ME', args.name, quantity, campaign.unit === 'gallons'))
+        this.existingCampaigns.push(ActiveCampaign.fromCampaign(campaign, 30, this.chooseARandomAddress(), args.name, quantity, campaign.unit === 'gallons'))
       } else {
         this.existingCampaigns[this.modalIndex].quantity += quantity
       }
 
       this.modalShowing = false
       this.scrollTo('campaigns')
+    },
+    chooseARandomAddress (): string {
+      return this.addresses[getRandomInt(3)]
     }
   },
   mounted () {

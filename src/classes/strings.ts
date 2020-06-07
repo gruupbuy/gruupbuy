@@ -24,3 +24,7 @@ export function convertPriceFromCentsToDollarsNumber (price: number): number {
 export function convertPriceFromCentsToDollars (price: number, currency = 'USD'): string {
   return formatPrice(convertPriceFromCentsToDollarsNumber(price), currency)
 }
+
+export function getRandomInt (max: number): number {
+  return Math.floor(Math.random() * Math.floor(max))
+}
