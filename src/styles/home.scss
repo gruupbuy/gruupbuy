@@ -1,6 +1,7 @@
 $blue: #1C74EC;
 $blue-hover: #7FB5FF;
 $black: #141414;
+$red: #FA3D64;
 
 .home {
     padding: 0 0 0 95px;
@@ -18,6 +19,7 @@ $black: #141414;
 
     .info {
         padding-right: 95px;
+        margin-bottom: 115px;
         display: flex;
         text-align: left;
         
@@ -47,7 +49,111 @@ $black: #141414;
 
             .right-content {
                 font-size: 14px;
-                font-color: $black;
+                color: $black;
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .section-title {
+        font-weight: bold;
+        font-size: 22px;
+        color: $black;
+        margin-bottom: 55px;
+    }
+    .active-campaigns {
+        display: flex;
+        flex-direction: column;
+    }
+    .campaign {
+        display: flex;
+        margin-bottom: 35px;
+
+        .campaign-column-left {
+            width: 645px;
+            margin-right: 20px;
+
+            .campaign-title {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .title {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                .days-left {
+                    display: flex;
+                    font-weight: bold;
+                    font-size: 12px;
+                    color: $blue;
+                    align-items: flex-end;
+                }
+
+                .red {
+                    color: $red;
+                }
+            }
+            .progress-container {
+                width: 100%;
+                margin: 15px 0;
+                progress {
+                    width: 100%;
+                }
+            }
+            .info-row {
+                display: flex;
+                .image-container {
+                    margin-right: 23px;
+                }
+                img.info-image {
+                    width: 190px;
+                    height: 133px;
+                }
+                .info-container {
+                    text-align: left;
+                    span.key {
+                        font-weight: bold;
+                        font-size: 12px;
+                        margin-right: 3px;
+                    }
+                    span.value {
+                        font-size: 12px;
+
+                        .specifications {
+                            display: inline-block;
+                            margin-left: 5px;
+
+                            a {
+                                color: $blue;
+                                text-decoration: none;
+                            }
+
+                            a:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .campaign-column-right {
+            display: flex;
+            justify-content: flex-start;
+
+            .ccr-row {
+                display: flex;
+                height: 30px;
+                margin-top: 20px;
+
+                .progress-percent {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: flex-end;
+                    font-size: 13px;
+                    font-weight: bold;
+                    margin-right: 20px;
+                }
             }
         }
     }
