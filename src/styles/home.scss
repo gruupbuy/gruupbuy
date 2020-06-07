@@ -6,6 +6,10 @@ $border-color: #E5F1FF;
 $yellow: #F7B423;
 $trow-hover: #F5F9FE;
 
+body {
+    scroll-behavior: smooth;
+}
+
 .home {
     padding: 0 0 0 15px;
     font-family: Arial, Helvetica, sans-serif;
@@ -21,10 +25,11 @@ $trow-hover: #F5F9FE;
     }
 
     .info {
-        padding-right: 95px;
         margin-bottom: 115px;
         display: flex;
         text-align: left;
+        justify-content: center;
+        align-items: center;
         
         .left-column-content {
             margin-right: 65px;
@@ -67,6 +72,7 @@ $trow-hover: #F5F9FE;
         display: flex;
         flex-direction: column;
         margin-bottom: 55px;
+        align-items: center;
     }
     .campaign {
         display: flex;

@@ -13,8 +13,8 @@
         <div class="title">DETROIT LOCAL BUSINESS</div>
         <div class="big-description">Leverage group purchasing power to get supplies you need at the best prices.</div>
         <div class="buttons">
-          <button class="primary">View existing GruupBuys</button>
-          <button class="primary">Start a GruupBuy</button>
+          <button class="primary" @click="scrollTo('campaigns')">View existing GruupBuys</button>
+          <button class="primary" @click="scrollTo('table')">Start a GruupBuy</button>
         </div>
       </div>
       <div class="right-column-content">
@@ -26,7 +26,7 @@
         <div class="right-content">View vetted factories below and start a new group buy.</div>
       </div>
     </div>
-    <div class="section-title">
+    <div class="section-title" ref="campaigns">
       Existing GruupBuy Campaigns
     </div>
     <div class="active-campaigns">
@@ -75,7 +75,7 @@
     <div class="section-title">
       GruupBuy Vetted Factories
     </div>
-    <div class="table-container">
+    <div class="table-container" ref="table">
       <div class="table-headers">
         <div class="th t-score">SCORE</div>
         <div class="th t-data">PRODUCT</div>
@@ -146,6 +146,10 @@ export default Vue.extend({
       rval = rval.toUpperCase()
       rval += input.slice(1, input.length)
       return rval
+    },
+    scrollTo (element: string): void {
+      const refElement = this.$refs[element] as Element
+      refElement.scrollIntoView(true)
     }
   },
   mounted () {
