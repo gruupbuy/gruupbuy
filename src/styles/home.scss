@@ -1,13 +1,16 @@
-$blue: #1C74EC;
-$blue-hover: #7FB5FF;
-$black: #141414;
-$red: #FA3D64;
-$border-color: #E5F1FF;
-$yellow: #F7B423;
-$trow-hover: #F5F9FE;
+@import "shared";
 
 body {
     scroll-behavior: smooth;
+}
+
+.shadow {
+    width: 200vh;
+    height: 200vh;
+    opacity: 50%;
+    background-color: black;
+    position: fixed;
+    margin: -300px;
 }
 
 .home {
@@ -289,37 +292,4 @@ body {
     a.specifications:hover {
         text-decoration: underline;
     }
-}
-
-button {
-    min-width: 135px;
-    min-height: 30px;
-    font-weight: bold;
-    font-size: 13px;
-    margin: 5px;
-}
-
-button.primary {
-    background-color: $blue;
-    color: white;
-    border-style: none;
-}
-
-button.primary:hover {
-    cursor: pointer;
-    background-color: $blue-hover;
-}
-
-button.secondary {
-    background-color: white;
-    color: $blue;
-    border-style: solid;
-    border-width: 1px;
-    border-color: $blue;
-}
-
-button.secondary:hover {
-    cursor: pointer;
-    border-color: $blue-hover;
-    color: $blue-hover;
 }

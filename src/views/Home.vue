@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <modal/>
+    <div class="shadow"></div>
     <div class="headerbar">
       <div class="button-bar">
         <button class="secondary">Login / Sign Up</button>
@@ -104,9 +106,13 @@
 import Vue from 'vue'
 import ActiveCampaign from '@/classes/active-campaign'
 import Campaign from '@/classes/campaign'
+import Modal from '@/components/Modal.vue'
 
 export default Vue.extend({
   name: 'Home',
+  components: {
+    Modal
+  },
   data: () => {
     return {
       existingCampaigns: [] as ActiveCampaign[],

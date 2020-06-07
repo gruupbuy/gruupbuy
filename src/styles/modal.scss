@@ -1,0 +1,138 @@
+@import "shared";
+
+.home {
+    .modal {
+        $modal-width: 500px;
+        $padding: 70px;
+        position: fixed;
+        width: $modal-width;
+        height: 550px;
+        background-color: #ffffff;
+        margin: 2% auto; /* Will not center vertically and won't work in IE6/7. */
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: $padding;
+
+        .modal-title {
+            text-align: left;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .modal-subtitle {
+            text-align: left;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .modal-info {
+            text-align: left;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .input-section, .input-section-horizontal {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            font-size: 13px;
+            margin-bottom: 15px;
+
+            .input-title {
+                margin-bottom: 3px;
+            }
+
+            $input-pad: 10px;
+            .input-value {
+                height: 40px;
+                border: 1px solid $border-color;
+
+                input {
+                    padding-left: $input-pad;
+                    width: 98%;
+                    height: 38px;
+                    border: none;
+                    background-color: $border-color;
+                    font-size: 13px;
+                }
+
+                input.empty {
+                    width: 90%;
+                    background-color: white;
+                }
+            }
+            
+            $exp-width: 150px;
+            .exp-date {
+                width: $exp-width;
+            }
+
+            input.exp-date-input {
+                width: $exp-width - $input-pad - 1;
+            }
+
+            input.exp-empty {
+                width: 125px;
+                background-color: white;
+            }
+
+            $cvv-width: 70px;
+            .cvv {
+                width: $cvv-width;
+            }
+
+            input.cvv-width-input {
+                width: $cvv-width - $input-pad - 1px;
+            }
+
+            input.cvv-empty {
+                width: 55px;
+                background-color: white;
+            }
+
+            $zip-width: 90px;
+            .zip {
+                width: $zip-width;
+            }
+
+            input.zip-width-input {
+                width: $zip-width - $input-pad - 1px;
+                height: 39px;
+            }
+
+            input.zip-empty {
+                width: 75px;
+                height: 38px;
+                background-color: white;
+            }
+        }
+
+        .bottom-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-section-horizontal {
+            .input-value {
+                input.short {
+                    width: 80%;
+                }
+            }
+        }
+
+        .button-row {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+
+            button.extra-padding {
+                min-width: 180px;
+                min-height: 40px;
+            }
+        }
+    }
+}
