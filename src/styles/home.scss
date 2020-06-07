@@ -243,6 +243,15 @@ body {
             width: 140px;
         }
 
+        .t-product {
+            height: 40px;
+            justify-content: flex-end;
+            align-items: flex-end;
+            display: flex;
+            flex-direction: column; 
+            width: 140px;
+        }
+
         .t-qty {
             width: 40px;
         }

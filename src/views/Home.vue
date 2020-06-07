@@ -90,7 +90,7 @@
       </div>
       <div v-for="(campaign, index) in availableCampaigns" :key="index" class="table-row">
         <div class="td t-score"><div class="score-square" :class="campaign.getScoreClass()">{{campaign.score}}</div></div>
-        <div class="td t-data"><div class="product" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.campaignTitle}}</div><a :href="campaign.specificationLink" class="specifications" target="_blank">Product Specifications</a></div>
+        <div class="td t-product"><div class="product" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.campaignTitle}}</div><a :href="campaign.specificationLink" class="specifications" target="_blank">Product Specifications</a></div>
         <div class="td t-data" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getFactoryName()}}</div>
         <div class="td t-location" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getLocation()}}</div>
         <div class="td t-lead-time" :class="shouldBold(campaign) ? 'bold' : ''">{{campaign.getLeadTime()}}</div>
