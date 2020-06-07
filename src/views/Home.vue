@@ -4,7 +4,7 @@
     <div v-if="modalShowing" class="modal-shadow" style="opacity: 50%;"></div>
     <div class="headerbar">
       <div class="button-bar">
-        <button class="secondary">Login / Sign Up</button>
+        <a href="https://medinashealth.typeform.com/to/SR0yfW" target="_blank"><button class="secondary">Login / Sign Up</button></a>
       </div>
       <div class="logo-bar">
         <img src="../assets/gruupbuy.svg"/>
