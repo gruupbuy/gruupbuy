@@ -1,0 +1,87 @@
+$blue: #1C74EC;
+$blue-hover: #7FB5FF;
+$black: #141414;
+
+.home {
+    padding: 0 0 0 95px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    .headerbar {
+        margin-bottom: 55px;
+    }
+
+    .button-bar {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .info {
+        padding-right: 95px;
+        display: flex;
+        text-align: left;
+        
+        .left-column-content {
+            margin-right: 65px;
+            .title {
+                color: $blue;
+                font-weight: bold;
+                font-size: 12px;
+                margin-bottom: 35px;
+            }
+
+            .big-description {
+                font-weight: bold;
+                font-size: 30px;
+                margin-bottom: 40px;
+                color: $black;
+            }
+
+            .buttons {
+                display: flex;
+            }
+        }
+
+        .right-column-content {
+            margin-top: 50px;
+
+            .right-content {
+                font-size: 14px;
+                font-color: $black;
+            }
+        }
+    }
+}
+
+button {
+    min-width: 135px;
+    min-height: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 5px;
+}
+
+button.primary {
+    background-color: $blue;
+    color: white;
+    border-style: none;
+}
+
+button.primary:hover {
+    cursor: pointer;
+    background-color: $blue-hover;
+}
+
+button.secondary {
+    background-color: white;
+    color: $blue;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $blue;
+}
+
+button.secondary:hover {
+    cursor: pointer;
+    border-color: $blue-hover;
+    color: $blue-hover;
+}
